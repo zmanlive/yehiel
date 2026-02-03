@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Album Release - Feb 11, 2026</title>
+    <title>יחיאל - התחלות חדשות</title>
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,13 +95,20 @@
 
             <!-- Explainer Text with Translations -->
             <div class="fade-in delay-200 border-t border-b border-gray-100 py-4">
-                <!-- Language Toggles -->
-                <div class="flex justify-center gap-3 mb-3 text-xs font-semibold tracking-wide text-gray-400">
-                    <button onclick="setLanguage('he')" id="btn-he" class="hover:text-brand transition-colors text-brand underline underline-offset-4">HE</button>
-                    <span>|</span>
-                    <button onclick="setLanguage('en')" id="btn-en" class="hover:text-brand transition-colors">EN</button>
-                    <span>|</span>
-                    <button onclick="setLanguage('fr')" id="btn-fr" class="hover:text-brand transition-colors">FR</button>
+                <!-- Language Toggles (Flags via Images) -->
+                <div class="flex justify-center gap-6 mb-4">
+                    <!-- Hebrew Flag -->
+                    <button onclick="setLanguage('he')" id="btn-he" class="transition-all duration-300 transform hover:scale-110 grayscale-0 opacity-100 scale-110" title="Hebrew">
+                        <img src="https://flagcdn.com/w40/il.png" alt="IL" class="h-6 w-auto shadow-sm rounded-sm border border-gray-100">
+                    </button>
+                    <!-- US Flag -->
+                    <button onclick="setLanguage('en')" id="btn-en" class="transition-all duration-300 transform hover:scale-110 grayscale opacity-50" title="English">
+                        <img src="https://flagcdn.com/w40/us.png" alt="US" class="h-6 w-auto shadow-sm rounded-sm border border-gray-100">
+                    </button>
+                    <!-- French Flag -->
+                    <button onclick="setLanguage('fr')" id="btn-fr" class="transition-all duration-300 transform hover:scale-110 grayscale opacity-50" title="French">
+                        <img src="https://flagcdn.com/w40/fr.png" alt="FR" class="h-6 w-auto shadow-sm rounded-sm border border-gray-100">
+                    </button>
                 </div>
 
                 <p id="explainer-text" class="text-sm font-light text-gray-600 leading-relaxed px-2 font-hebrew" dir="rtl">
@@ -154,7 +161,7 @@
                 font: 'font-sans'
             },
             he: {
-                text: ` <br>הקישורים לאלבום יהיו זמינים ב<br><span class="font-bold text-brand text-2xl block mt-2">11.02.2026</span>`,
+                text: `ההמתנה כמעט הסתיימה.<br>הקישורים לאלבום יהיו זמינים ב<br><span class="font-bold text-brand text-2xl block mt-2">11.02.2026</span>`,
                 dir: 'rtl',
                 font: 'font-hebrew'
             },
@@ -177,17 +184,31 @@
             container.classList.remove('font-sans', 'font-hebrew');
             container.classList.add(data.font);
 
-            // Update Active Button State
+            // Update Active Button State (Flags)
             ['he', 'en', 'fr'].forEach(l => {
                 const btn = document.getElementById('btn-' + l);
                 if (l === lang) {
-                    btn.classList.add('text-brand', 'underline', 'underline-offset-4');
-                    btn.classList.remove('text-gray-400');
+                    btn.classList.remove('grayscale', 'opacity-50');
+                    btn.classList.add('grayscale-0', 'opacity-100', 'scale-110');
                 } else {
-                    btn.classList.remove('text-brand', 'underline', 'underline-offset-4');
+                    btn.classList.add('grayscale', 'opacity-50');
+                    btn.classList.remove('grayscale-0', 'opacity-100', 'scale-110');
                 }
             });
         }
+
+        // --- Auto Detect Language ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get browser language (e.g., "en-US" -> "en")
+            const userLang = navigator.language || navigator.userLanguage; 
+            const shortLang = userLang.split('-')[0]; 
+            
+            // If the browser language is in our list (en, fr), switch to it.
+            // Otherwise, it will stay Hebrew (which is the default in the HTML).
+            if (translations[shortLang] && shortLang !== 'he') {
+                setLanguage(shortLang);
+            }
+        });
 
         // --- Countdown Timer Logic ---
         
