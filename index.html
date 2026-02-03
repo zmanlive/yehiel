@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Album Release - Feb 11, 2026</title>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter for UI, Playfair Display for elegance, Heebo for Hebrew -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#5A5AB5', // The blue-purple from the album text
+                        offwhite: '#F9F9F9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        hebrew: ['Heebo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.3s; }
+        .delay-300 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <main class="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden fade-in pb-6">
+        
+        <!-- Image Section -->
+        <div class="relative w-full bg-gray-200">
+            <img 
+                src="./image_b4e466.jpg" 
+                alt="Album Cover" 
+                class="w-full h-auto object-cover transition-all duration-700"
+                onerror="this.src='https://placehold.co/600x600/e2e8f0/5A5AB5?text=Album+Cover';"
+            >
+            <!-- Overlay gradient -->
+            <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent"></div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="px-6 py-4 text-center space-y-6">
+            
+            <!-- Countdown Timer (Seconds Removed) -->
+            <div class="fade-in delay-100">
+                <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4">Releasing In</p>
+                <div id="countdown" class="flex justify-center gap-4 text-brand">
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold font-serif day-val">00</span>
+                        <span class="text-[10px] uppercase text-gray-400 tracking-wider">Days</span>
+                    </div>
+                    <span class="text-2xl font-serif text-gray-300">:</span>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold font-serif hour-val">00</span>
+                        <span class="text-[10px] uppercase text-gray-400 tracking-wider">Hrs</span>
+                    </div>
+                    <span class="text-2xl font-serif text-gray-300">:</span>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold font-serif min-val">00</span>
+                        <span class="text-[10px] uppercase text-gray-400 tracking-wider">Min</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explainer Text with Translations -->
+            <div class="fade-in delay-200 border-t border-b border-gray-100 py-4">
+                <!-- Language Toggles -->
+                <div class="flex justify-center gap-3 mb-3 text-xs font-semibold tracking-wide text-gray-400">
+                    <button onclick="setLanguage('he')" id="btn-he" class="hover:text-brand transition-colors text-brand underline underline-offset-4">HE</button>
+                    <span>|</span>
+                    <button onclick="setLanguage('en')" id="btn-en" class="hover:text-brand transition-colors">EN</button>
+                    <span>|</span>
+                    <button onclick="setLanguage('fr')" id="btn-fr" class="hover:text-brand transition-colors">FR</button>
+                </div>
+
+                <p id="explainer-text" class="text-sm font-light text-gray-600 leading-relaxed px-2 font-hebrew" dir="rtl">
+                    ההמתנה כמעט הסתיימה.<br>
+                    הקישורים לאלבום יהיו זמינים ב<br>
+                    <span class="font-bold text-brand text-2xl block mt-2">11.02.2026</span>
+                </p>
+            </div>
+
+            <!-- Vertical Links Stack -->
+            <div class="flex flex-col gap-3 fade-in delay-300">
+                
+                <!-- Spotify -->
+                <div class="w-full flex items-center justify-between px-6 py-4 rounded-xl border border-gray-200 bg-white shadow-sm cursor-not-allowed select-none">
+                    <div class="flex items-center gap-4">
+                        <i class="fab fa-spotify text-2xl text-[#1DB954]"></i>
+                        <span class="font-medium text-gray-600">Spotify</span>
+                    </div>
+                    <span class="text-xs font-bold text-brand bg-brand/10 px-3 py-1 rounded-full">COMING SOON</span>
+                </div>
+
+                <!-- YouTube -->
+                <div class="w-full flex items-center justify-between px-6 py-4 rounded-xl border border-gray-200 bg-white shadow-sm cursor-not-allowed select-none">
+                    <div class="flex items-center gap-4">
+                        <i class="fab fa-youtube text-2xl text-[#FF0000]"></i>
+                        <span class="font-medium text-gray-600">YouTube</span>
+                    </div>
+                    <span class="text-xs font-bold text-brand bg-brand/10 px-3 py-1 rounded-full">COMING SOON</span>
+                </div>
+
+                <!-- Instagram -->
+                <div class="w-full flex items-center justify-between px-6 py-4 rounded-xl border border-gray-200 bg-white shadow-sm cursor-not-allowed select-none">
+                    <div class="flex items-center gap-4">
+                        <i class="fab fa-instagram text-2xl text-[#E1306C]"></i>
+                        <span class="font-medium text-gray-600">Instagram</span>
+                    </div>
+                    <span class="text-xs font-bold text-brand bg-brand/10 px-3 py-1 rounded-full">COMING SOON</span>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- Translations ---
+        const translations = {
+            en: {
+                text: `The wait is almost over.<br>Links to the album will be live on<br><span class="font-bold text-brand text-2xl block mt-2">February 11, 2026</span>`,
+                dir: 'ltr',
+                font: 'font-sans'
+            },
+            he: {
+                text: ` <br>הקישורים לאלבום יהיו זמינים ב<br><span class="font-bold text-brand text-2xl block mt-2">11.02.2026</span>`,
+                dir: 'rtl',
+                font: 'font-hebrew'
+            },
+            fr: {
+                text: `L'attente est presque terminée.<br>Les liens vers l'album seront disponibles le<br><span class="font-bold text-brand text-2xl block mt-2">11 Février 2026</span>`,
+                dir: 'ltr',
+                font: 'font-sans'
+            }
+        };
+
+        function setLanguage(lang) {
+            const container = document.getElementById('explainer-text');
+            const data = translations[lang];
+            
+            // Update Text
+            container.innerHTML = data.text;
+            container.setAttribute('dir', data.dir);
+            
+            // Update Font Class
+            container.classList.remove('font-sans', 'font-hebrew');
+            container.classList.add(data.font);
+
+            // Update Active Button State
+            ['he', 'en', 'fr'].forEach(l => {
+                const btn = document.getElementById('btn-' + l);
+                if (l === lang) {
+                    btn.classList.add('text-brand', 'underline', 'underline-offset-4');
+                    btn.classList.remove('text-gray-400');
+                } else {
+                    btn.classList.remove('text-brand', 'underline', 'underline-offset-4');
+                }
+            });
+        }
+
+        // --- Countdown Timer Logic ---
+        
+        // Target Date: February 11, 2026, 00:00:00
+        const targetDate = new Date('February 11, 2026 00:00:00').getTime();
+
+        const timerInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('countdown').innerHTML = "<div class='text-xl font-bold'>The Album is Live!</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.querySelector('.day-val').innerText = days < 10 ? '0' + days : days;
+            document.querySelector('.hour-val').innerText = hours < 10 ? '0' + hours : hours;
+            document.querySelector('.min-val').innerText = minutes < 10 ? '0' + minutes : minutes;
+
+        }, 1000);
+    </script>
+</body>
+</html>
