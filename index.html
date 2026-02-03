@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>יחיאל - התחלות חדשות</title>
     
+    <!-- ==========================================
+         FAVICON & SOCIAL PREVIEW SETTINGS
+         ========================================== -->
+    <!-- Browser Tab Icon (Favicon) - Best to use the Logo/Text for clarity at small sizes -->
+    <link rel="icon" type="image/png" href="./1.png">
+    <link rel="apple-touch-icon" href="./1.png">
+
+    <!-- Open Graph / WhatsApp Preview - Best to use the Album Cover for visual impact -->
+    <meta property="og:type" content="music.album">
+    <meta property="og:title" content="יחיאל - התחלות חדשות">
+    <meta property="og:description" content="האלבום החדש - יוצא ב-11.02.2026">
+    <meta property="og:image" content="./image_b4e466.jpg">
+    <!-- Removed specific width/height to let the platform detect the image size naturally -->
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts: Inter for UI, Playfair Display for elegance, Heebo for Hebrew -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS for styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Custom Config -->
@@ -72,7 +86,7 @@
         <!-- Content Section -->
         <div class="px-6 py-4 text-center space-y-6">
             
-            <!-- Countdown Timer (Seconds Removed) -->
+            <!-- Countdown Timer -->
             <div class="fade-in delay-100">
                 <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4">Releasing In</p>
                 <div id="countdown" class="flex justify-center gap-4 text-brand">
@@ -95,7 +109,7 @@
 
             <!-- Explainer Text with Translations -->
             <div class="fade-in delay-200 border-t border-b border-gray-100 py-4">
-                <!-- Language Toggles (Flags via Images) -->
+                <!-- Language Toggles (Flags) -->
                 <div class="flex justify-center gap-6 mb-4">
                     <!-- Hebrew Flag -->
                     <button onclick="setLanguage('he')" id="btn-he" class="transition-all duration-300 transform hover:scale-110 grayscale-0 opacity-100 scale-110" title="Hebrew">
@@ -199,20 +213,15 @@
 
         // --- Auto Detect Language ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Get browser language (e.g., "en-US" -> "en")
             const userLang = navigator.language || navigator.userLanguage; 
             const shortLang = userLang.split('-')[0]; 
             
-            // If the browser language is in our list (en, fr), switch to it.
-            // Otherwise, it will stay Hebrew (which is the default in the HTML).
             if (translations[shortLang] && shortLang !== 'he') {
                 setLanguage(shortLang);
             }
         });
 
         // --- Countdown Timer Logic ---
-        
-        // Target Date: February 11, 2026, 00:00:00
         const targetDate = new Date('February 11, 2026 00:00:00').getTime();
 
         const timerInterval = setInterval(() => {
